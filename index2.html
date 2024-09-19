@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello</title>
+        <script src="jquery-3.7.1.js"></script>
+        <!-- Embed/Internal CSS : hanya untuk index.html -->
+        <style>
+            #tabel-fakultas {
+                width:100%;
+            }
+            #tabel-fakultas tr td:first-child {
+                text-align:right;
+            }
+            #content-left, #content-right 
+            {
+                width:50%;
+                vertical-align: top;
+            }
+            #tabel-fakultas, #tabel-fakultas tr td, #tabel-fakultas tr th
+            {
+                border:1px solid black;
+                border-collapse:collapse;
+                padding:5px;
+            }
+        </style>
+
+        <!-- External CSS : reference ke file style2.css -->
+        <link rel="stylesheet" href="style2.css">
+    </head>
+    <body>
+        <div id="judul-atas">
+            <h1>UK PETRA</h1>
+        </div>
+        <div id="menu">
+            <a class="button-menu" href="index.html">HOME</a>
+            <a class="button-menu" href="profile.html">PROFILE</a>
+            <a class="button-menu" href="#">ABOUT</a>
+            <a class="button-menu" href="https://www.petra.ac.id">PETRA</a> 
+        </div>
+        <div class="content">
+            <!-- Comment -->
+            <!-- <h2>Hello</h2> -->
+             <table>
+                <tr>
+                    <!-- style="" : Inline CSS -->
+                    <td id="content-left">
+                        <h3 id="judul">Hello Petranesians</h3>
+                        <img src="images/petra.jpg" alt="UK Petra" width="80%">
+                        <p>
+                            <b>Lorem Ipsum</b> <b><i>is simply dummy</i></b>
+                            <a href="https://www.petra.ac.id">Petra</a> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        </p>
+                    </td>
+                    <td id="content-right">
+                        <h3>Fakultas</h3>
+                        <table id="tabel-fakultas">
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Teknologi Industri</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>School of Business Management</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ilmu Komunikasi</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Teknik Sipil dan Perancangan</td>
+                            </tr>
+                        </table><br>
+                        <button onclick="ganti()">
+                            Ganti Judul
+                        </button>
+                        <br><br>
+                        <input type="number" id="n1">
+                    <select id="opr">
+                        <option value="plus">+</option>
+                        <option value="minus">-</option>
+                    </select>
+                        <input type="number" id="n2"> = <span id="hasil"></span>
+                        <br>
+                        <button id="btn-tambah">Tambah</button>
+                    </td>
+                </tr>
+            </table>
+            <!-- <ol>
+                <li>ABC</li>
+                <li>AAB</li>
+                <li>ACC</li>
+                <li>DEF</li>
+                <li>GHI</li>
+            </ol> -->
+        </div>
+    </body>
+</html>
+
+<script>
+    $(function(){
+        // $('#judul').html('judulnya');
+        // document.getElementById('judul').innerHTML = 'jkljkl';
+        $('#btn-tambah').click(function(){
+            var n1 = $("#n1").val(); // get .val(<kosong>);
+            var n2 = $("#n2").val();
+            var opr = $("#opr").val();
+            if(opr == 'plus') var hasil = parseInt(n1) + parseInt(n2);
+            if(opr == 'minus') var hasil = parseInt(n1) - parseInt(n2);
+            $("#hasil").html(hasil);
+        });
+    });
+
+    function ganti()
+    {
+        // get
+        var judul = document.getElementById('judul');
+
+        if(judul.innerHTML == 'JUDULNYA')
+        {
+            // var judulnya = prompt("Masukkan Judulnya");
+            var judulnya = "Hello Petranesians";
+            // if(confirm('Ganti judul?'))
+            // {
+                judul.innerHTML = judulnya;
+                judul.style.backgroundColor = 'white';
+            // }
+        }
+        else
+        {
+            // set
+            judul.innerHTML = 'JUDULNYA';
+            judul.style.backgroundColor = '#afafaf';
+        }
+    }
+
+    function tambah()
+    {
+        var n1 = document.getElementById('n1').value;
+        var n2 = document.getElementById('n2').value;
+        var opr = document.getElementById('opr').value;
+
+        if(opr == 'plus') var hasil = parseInt(n1) + parseInt(n2);
+        if(opr == 'minus') var hasil = parseInt(n1) - parseInt(n2);
+
+        document.getElementById('hasil').innerText = hasil;
+    }
+
+</script>

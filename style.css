@@ -1,0 +1,15 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight:bolder;
+    color: yellow;
+}
+.bg-gray:nth-child(odd) {
+    background-color: gray !important;
+}
+#par1 {
+    text-decoration: underline;
+}
+
+#par1:hover{
+    font-size:30px;
+}

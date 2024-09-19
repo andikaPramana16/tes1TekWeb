@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Drawer</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .canvas {
+      border: 1px solid #ccc;
+      margin-top: 20px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .pattern-display {
+      line-height: 1.2;
+      font-size: 12px;
+      white-space: pre;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="">
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1 text-white">Bootstrap x jQuery</span>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h4>Form Control</h4>
+          <form id="shapeForm" class="mt-4">
+            <div class="mb-3">
+              <label for="width" class="form-label">Width:</label>
+              <input type="number" class="form-control" id="width" value="">
+            </div>
+  
+            <div class="mb-3">
+              <label for="height" class="form-label">Height:</label>
+              <input type="number" class="form-control" id="height" value="">
+            </div>
+  
+            <div class="mb-3">
+              <label for="size" class="form-label">Size (px):</label>
+              <input type="number" class="form-control" id="size" value="20">
+            </div>
+  
+            <div class="mb-3">
+              <label for="pattern" class="form-label">Pattern (max length 1 letter):</label>
+              <input type="text" class="form-control" id="pattern" value="X" maxlength="1">
+            </div>
+  
+            <div class="mb-3">
+              <label for="type" class="form-label">Type:</label>
+              <select id="type" class="form-select">
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="circle">Circle</option>
+              </select>
+            </div>
+  
+            <button type="button" id="drawShape" class="btn btn-primary">Draw Shape</button>
+          </form>
+        </div>
+  
+        <div class="col-md-6">
+          <h4>Display</h4>
+          <div id="canvas" class="canvas">
+            <div id="shapeOutput" class="pattern-display"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <script>
+    $(document).ready(function() {
+        $('#drawShape').click(function() {
+          const width = parseInt($('#width').val());
+          const height = parseInt($('#height').val());
+          const size = parseInt($('#size').val());
+          const pattern = $('#pattern').val();
+          const type = $('#type').val();
+      
+          $('#shapeOutput').empty();
+          let result = '';
+      
+          if (type === 'square') {
+            for (let i = 0; i < height; i++) {
+              for (let j = 0; j < width; j++) {
+                result += pattern;
+              }
+              result += '\n';
+            }
+          }
+
+
+      
+          $('#shapeOutput').css({
+            'font-size': size + 'px'
+          }).text(result);
+        });
+      });
+  </script>
+</body>
+</html>
